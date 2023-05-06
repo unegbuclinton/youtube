@@ -1,12 +1,8 @@
-import dayjs from "dayjs";
 import React, { useState } from "react";
-import toast from "react-hot-toast";
-import ReactPlayer from "react-player/youtube";
-import { useDispatch, useSelector } from "react-redux";
-// import { DPIconFilledHeart, DPIconHeart } from "../assets/images/icons";
-import { getUserData, likeAPost } from "../redux/DashboardSlice";
+import { useSelector } from "react-redux";
 import "./image.css";
 import Stamps from "./Stamps";
+import VideoAddons from "./VideoAddons";
 const VideoCard = ({ videos }) => {
   const [controls, setControls] = useState(false);
   const addControl = () => {
@@ -14,35 +10,26 @@ const VideoCard = ({ videos }) => {
   };
   const { userData } = useSelector((state) => state.dashboard);
   const { limit, nextTime } = userData;
-  const dispatch = useDispatch();
-  const [forLike, setForLike] = useState(false);
-  const formatDate = dayjs(nextTime).format("ddd DD/MM hh:mm");
-  const getLike = () => {
-    setForLike((prev) => !prev);
-    dispatch(likeAPost(id)).then(() => {
-      dispatch(getUserData());
-      if (!limit) return;
-      toast.error(
-        `You have reached your 100 likes daily limit! Come back at ${formatDate}`
-      );
-    });
-  };
 
   return (
     <>
-      {videos?.map(({ urls }, idx) => (
-        <div key={idx} className="relative" onClick={addControl}>
-          <Stamps />
-          <ReactPlayer
-            // muted={true}
-            // playing={true}
-            // controls={controls}
-            width="100%"
-            height="440px"
-            url={urls}
-          />
-        </div>
-      ))}
+      {videos?.map(
+        (
+          { URL, profileImage, caption, comments, id, likes, profileName },
+          idx
+        ) => (
+          <div key={idx} className="relative mb-2" onClick={addControl}>
+            <video src={URL}></video>
+            <Stamps likes={likes} comments={comments} id={id} />
+            <VideoAddons
+              caption={caption}
+              profileName={profileName}
+              profileImage={profileImage}
+              src={profileImage}
+            />
+          </div>
+        )
+      )}
     </>
   );
 };

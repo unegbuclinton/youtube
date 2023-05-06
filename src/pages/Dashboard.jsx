@@ -1,18 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
-import ReactPlayer from "react-player";
 import { useDispatch, useSelector } from "react-redux";
 import SyncLoader from "react-spinners/SyncLoader";
 import Dashboardlayout from "../components/Dashboardlayout";
-import Stamps from "../components/Stamps";
 import VideoCard from "../components/VideoCard";
-// import ImageCard from "../components/ImageCard";
-
 import {
   pageCounter,
   updateProfilesList,
   uploadProfiles,
 } from "../redux/DashboardSlice";
-import "./pages.css";
+
 const Dashboard = () => {
   const [isFetching, setIsFetching] = useState(false);
   const listener = useRef(true);
@@ -48,17 +44,20 @@ const Dashboard = () => {
     }
   };
 
-  const videos = [
-    {
-      urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
-    },
-    {
-      urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
-    },
-    {
-      urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
-    },
-  ];
+  // const videos = [
+  //   {
+  //     urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+  //   },
+  //   {
+  //     urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+  //   },
+  //   {
+  //     urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+  //   },
+  //   {
+  //     urls: "https://www.youtube.com/watch?v=ysz5S6PUM-U",
+  //   },
+  // ];
   return (
     <Dashboardlayout>
       {isLoading ? (
@@ -69,9 +68,9 @@ const Dashboard = () => {
         <div
           ref={divRef}
           onScroll={handleScroll}
-          className="layout mb-[4rem] overflow-auto"
+          className="mb-[3rem] overflow-auto"
         >
-          <VideoCard videos={videos} />
+          <VideoCard videos={profiles} />
         </div>
       )}
     </Dashboardlayout>

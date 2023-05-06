@@ -31,7 +31,6 @@ const Login = () => {
         dispatch(getUserData());
         navigate("/dashboard");
       });
-      navigate("/dashboard");
     },
   });
 
