@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import "../assets/styles/videoCard.css";
+// import "../assets/styles/videoCard.css";
 import Stamps from "./Stamps";
 import VideoInfo from "./VideoAddons";
 import useElementOnScreen from "../hook/ElementOnScreen";
