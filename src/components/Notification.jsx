@@ -1,7 +1,7 @@
-import React from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import tik from "../assets/images/you-tube.png";
+import { HiOutlineCamera } from "react-icons/hi";
+import { RxMagnifyingGlass } from "react-icons/rx";
 
 const Notification = () => {
   const { userData } = useSelector((state) => state.dashboard);
@@ -11,19 +11,11 @@ const Notification = () => {
     navigate("/checkout");
   };
   return (
-    <div className="fixed top-0 z-10 w-full flex bg-white justify-start items-center pl-5 py-2 mb-2">
-      <img src={tik} alt="" className="w-[10%] mr-7" />
-      <div>
-        <p className="font-bold text-sm px-4 py-2 rounded-md text-folly border border-folly mr-10 bg-transparent md:text-2xl">
-          R$ {balance}
-        </p>
+    <div className="fixed h-[54px] top-0 z-20 w-full flex bg-transparent justify-end gap-[75px] text-white items-center pr-5 py-3 mx-2">
+      <div className="flex items-center gap-3">
+        <RxMagnifyingGlass size={25} />
+        <HiOutlineCamera color="#fff" size={25} />
       </div>
-      <p
-        onClick={checkout}
-        className=" text-white bg-folly px-4 py-2 text-sm font-semibold rounded"
-      >
-        SACAR
-      </p>
     </div>
   );
 };
