@@ -1,12 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
-// import "../assets/styles/videoCard.css";
 import Stamps from "./Stamps";
 import VideoInfo from "./VideoAddons";
 import useElementOnScreen from "../hook/ElementOnScreen";
 const VideoCard = ({ src, profileImage, profileName, caption, id, likes }) => {
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-
   const videoRef = useRef(null);
+
   const onVideoPress = () => {
     if (isVideoPlaying) {
       videoRef.current.pause();
@@ -19,9 +18,10 @@ const VideoCard = ({ src, profileImage, profileName, caption, id, likes }) => {
   const options = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.3,
+    threshold: 0.5,
   };
   const isVisibile = useElementOnScreen(options, videoRef);
+
   useEffect(() => {
     if (isVisibile) {
       if (!isVideoPlaying) {
@@ -48,9 +48,10 @@ const VideoCard = ({ src, profileImage, profileName, caption, id, likes }) => {
         onClick={onVideoPress}
         className="videoCard__player"
         src={src}
-        playsinline
+        muted
         loop
         preload="true"
+        type="video/mp4"
       />
     </div>
   );

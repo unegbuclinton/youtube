@@ -34,23 +34,23 @@ const Stamps = ({ likes, comments, id }) => {
   return (
     <div className="absolute bottom-[60px] right-3 flex flex-col items-center gap-4 text-white z-10">
       <div onClick={() => getLike(id)} className="flex flex-col items-center">
-        {forLike && <FiThumbsUp size={28} color="#fff" fill="#2a84bf" />}
-        {!forLike && <FiThumbsUp size={28} color="#fff" />}
+        {forLike && <FiThumbsUp size={25} color="#fff" fill="#2a84bf" />}
+        {!forLike && <FiThumbsUp size={25} color="#fff" />}
         <span className="text-sm font-semibold">{likes}</span>
       </div>
       <div className="flex flex-col items-center">
-        <FiThumbsDown size={28} color="#fff" onClick={() => disLikeVideo(id)} />
+        <FiThumbsDown size={25} color="#fff" onClick={() => disLikeVideo(id)} />
         <span className="text-sm font-semibold">Dislike</span>
       </div>
       <div className="flex flex-col items-center">
-        <MdOutlineInsertComment size={28} color="#fff" />
+        <MdOutlineInsertComment size={25} color="#fff" />
         <span className="text-sm font-semibold">{comments}</span>
       </div>
       <div className="flex flex-col items-center">
-        <IoIosShareAlt size={28} color="#fff" />
+        <IoIosShareAlt size={25} color="#fff" />
         <span className="text-sm font-semibold">Share</span>
       </div>
-      <BsThreeDots size={28} color="#fff" />
+      <BsThreeDots size={25} color="#fff" />
     </div>
   );
 };

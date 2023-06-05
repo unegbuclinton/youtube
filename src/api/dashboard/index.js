@@ -1,10 +1,10 @@
-import instance from '../../apiInstance';
+import instance from "../../apiInstance";
 
 export const getProfiles = async (page) => {
   try {
     const response = await instance({
-      method: 'get',
-      url: `feed?page=${page}&page_size=15`,
+      method: "get",
+      url: `feed?page=${page}&page_size=5`,
     });
     return response.data;
   } catch (error) {
@@ -15,10 +15,10 @@ export const getProfiles = async (page) => {
 export const likePost = async (id) => {
   try {
     const response = await instance({
-      method: 'put',
+      method: "put",
       url: `feed/like?id=${id}`,
       data: {
-        title: 'Making PUT Requests with Axios',
+        title: "Making PUT Requests with Axios",
       },
     });
     return response;
@@ -30,7 +30,7 @@ export const likePost = async (id) => {
 export const userData = async () => {
   try {
     const response = await instance({
-      method: 'get',
+      method: "get",
       url: `me`,
     });
     return response.data.user;
